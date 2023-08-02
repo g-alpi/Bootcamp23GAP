@@ -1,0 +1,15 @@
+.coverContainerForm {
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+}
+.coverContainerModal {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 70vh;
+}
+.coverContainerModal img,
+.coverContainerFor img {
+  height: 90vh;
+}

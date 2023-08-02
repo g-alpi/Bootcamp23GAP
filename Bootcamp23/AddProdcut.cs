@@ -41,7 +41,6 @@ namespace Bootcamp23
                     product["defaultuomid"] = customFunctions.GetEntityReference(service, "uom", new string[] { "uomid" }, "name", "Unit"); 
                     product["quantitydecimal"] = 2;
                     product["price"] = new Money(10);
-                    product["pricelevelid"] = customFunctions.GetEntityReference(service, "pricelevel", new string[] { "pricelevelid" }, "name", "EU Price List Test");
                     product["description"] = customFunctions.GetEntityAttribute(service, "gap_comic", new string[] { "gap_description" }, "gap_title", comic.Attributes["gap_title"].ToString());
 
                     Guid createdProductId = service.Create(product);

@@ -54,12 +54,14 @@ var modal = window.modal || {};
           console.log("Action Called Successfully...");
           result = JSON.parse(this.response);
           console.log(result);
+          if (document.querySelectorAll(".divModal").length >= 1) {
+            document.querySelectorAll(".divModal")[0].remove();
+          }
 
-          if (!result["ComicExist"]) {
-            addComicDOM();
-          } else if (result["ComicExist"]) {
-            console.log("Entro");
+          if (result["ComicExist"]) {
             comicExistDOM(result["CoverURL"], result["MyOutputParam"]);
+          } else {
+            addComicDOM();
           }
         } else {
           var error = JSON.parse(this.response).error;
@@ -85,6 +87,7 @@ var modal = window.modal || {};
       buttonNoElement.appendChild(document.createTextNode("No"));
 
       // Agregar elementos al div principal
+      divElement.classList.add("divModal");
       divElement.appendChild(paragraphElement);
       divElement.appendChild(buttonSiElement);
       divElement.appendChild(buttonNoElement);
@@ -97,12 +100,14 @@ var modal = window.modal || {};
       let divElement = document.createElement("div");
 
       let imgElement = document.createElement("img");
-      let h1Element = document.createElement("h1");
+      let h1Element = document.createElement("h3");
 
       imgElement.setAttribute("src", imgUrl);
       imgElement.setAttribute("alt", "thumbnail");
       h1Element.textContent = comicTitle;
 
+      divElement.classList.add("coverContainerModal");
+      divElement.classList.add("divModal");
       divElement.appendChild(h1Element);
       divElement.appendChild(imgElement);
       button.after(divElement);
