@@ -137,6 +137,23 @@ var modal = window.modal || {};
         }
       };
       request.send(window.JSON.stringify(data));
+
+      var pageInput = {
+        pageType: "entityrecord",
+        entityName: "gap_comic",
+      };
+      var navigationOptions = {
+        target: 1,
+      };
+      parent.Xrm.Navigation.navigateTo(pageInput, navigationOptions).then(
+        function success() {
+          // Run code on success
+          console.log("Loaded");
+        },
+        function error() {
+          // Handle errors
+        }
+      );
     }
   };
 }).call(modal);

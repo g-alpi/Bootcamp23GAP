@@ -1,6 +1,6 @@
-﻿using CleanCodeTest.Aplication.Mappers;
+﻿using CleanCodeTest.Aplication.Helper;
+using CleanCodeTest.Aplication.Mappers;
 using CleanCodeTest.Domain.Entities;
-using CleanCodeTest.Domain.Repositories;
 using CleanCodeTest.Domain.UseCases;
 using CleanCodeTest.Infrastucture.Adapters;
 using CleanCodeTest.Infrastucture.Repositories.Crm;
@@ -27,15 +27,17 @@ namespace CleanCodeTest
 
 
             Entity comic = (Entity)context.InputParameters["Target"];
+            CustomFunctions customFunctions = new CustomFunctions();
 
             string timeStamp = "1";
             string token = "5a40d446e4b3103af8981e918ceca113";
             string hash = "6c6387edab1c14f20c07e639e51c46d8";
+            string marvelApiId = customFunctions.GetEntityAttribute(service, "gap_comictest",new string[] { "gap_marvelapiidtest" }, "gap_comictestid",comic.Id.ToString());
             
             MarvelApiService marvelApiService = new MarvelApiService(timeStamp,hash, token, new HttpClient());
-            ComicApiMarvelDTO comicApiMarvelDTO = marvelApiService.getComicByID(comic.Attributes["gap_marvelapiid"].ToString());
+            ComicApiMarvelDTO comicApiMarvelDTO = marvelApiService.getComicByID(marvelApiId);
 
-            gap_Comic data = new gap_ComicsComicApiMarvelMappper().Map(comicApiMarvelDTO);
+            Gap_Comic data = new gap_ComicsComicApiMarvelMappper().Map(comicApiMarvelDTO);
 
             new ImportDataComic(new ComicCrmRepository(service)).invoke(data,comic);
         }

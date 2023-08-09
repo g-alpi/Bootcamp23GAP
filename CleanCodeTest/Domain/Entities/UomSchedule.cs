@@ -15,10 +15,10 @@ namespace CleanCodeTest.Domain.Entities
 	
 	
 	/// <summary>
-	/// Reason for the status of the Comic
+	/// Reason for the status of the Unit Group.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Gap_Comic_StatusCode
+	public enum UomSchedule_StatusCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -31,10 +31,10 @@ namespace CleanCodeTest.Domain.Entities
 	}
 	
 	/// <summary>
-	/// Status of the Comic
+	/// Status of the Unit Group.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Gap_Comic_StateCode
+	public enum UomSchedule_StateCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -46,57 +46,65 @@ namespace CleanCodeTest.Domain.Entities
 		Inactive = 1,
 	}
 	
+	/// <summary>
+	/// Grouping of units.
+	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("gap_comic")]
-	public partial class Gap_Comic : Microsoft.Xrm.Sdk.Entity
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("uomschedule")]
+	public partial class UomSchedule : Microsoft.Xrm.Sdk.Entity
 	{
 		
 		/// <summary>
-		/// Available fields, a the time of codegen, for the gap_comic entity
+		/// Available fields, a the time of codegen, for the uomschedule entity
 		/// </summary>
 		public static partial class Fields
 		{
+			public const string BaseUomName = "baseuomname";
 			public const string CreatedBy = "createdby";
+			public const string CreatedByExternalParty = "createdbyexternalparty";
+			public const string CreatedByExternalPartyName = "createdbyexternalpartyname";
 			public const string CreatedByName = "createdbyname";
 			public const string CreatedOn = "createdon";
 			public const string CreatedOnBehalfBy = "createdonbehalfby";
 			public const string CreatedOnBehalfByName = "createdonbehalfbyname";
-			public const string Gap_ComicId = "gap_comicid";
-			public const string Id = "gap_comicid";
-			public const string Gap_Cover = "gap_cover";
-			public const string Gap_Description = "gap_description";
-			public const string Gap_MarvelApiId = "gap_marvelapiid";
-			public const string Gap_Title = "gap_title";
+			public const string Description = "description";
 			public const string ImportSequenceNumber = "importsequencenumber";
 			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedByExternalParty = "modifiedbyexternalparty";
+			public const string ModifiedByExternalPartyName = "modifiedbyexternalpartyname";
 			public const string ModifiedByName = "modifiedbyname";
 			public const string ModifiedOn = "modifiedon";
 			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
 			public const string ModifiedOnBehalfByName = "modifiedonbehalfbyname";
+			public const string Name = "name";
 			public const string OrganizationId = "organizationid";
 			public const string OrganizationIdName = "organizationidname";
 			public const string OverriddenCreatedOn = "overriddencreatedon";
 			public const string StateCode = "statecode";
 			public const string StatusCode = "statuscode";
 			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
+			public const string Unit_Of_Measure_Schedule_Conversions = "Unit_Of_Measure_Schedule_Conversions";
+			public const string Unit_Of_Measurement_Schedule_Products = "Unit_Of_Measurement_Schedule_Products";
+			public const string UomScheduleId = "uomscheduleid";
+			public const string Id = "uomscheduleid";
 			public const string UtcConversionTimeZoneCode = "utcconversiontimezonecode";
 			public const string VersionNumber = "versionnumber";
 		}
 		
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Gap_Comic(System.Guid id) : 
+		public UomSchedule(System.Guid id) : 
 				base(EntityLogicalName, id)
 		{
 		}
 		
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Gap_Comic(string keyName, object keyValue) : 
+		public UomSchedule(string keyName, object keyValue) : 
 				base(EntityLogicalName, keyName, keyValue)
 		{
 		}
 		
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Gap_Comic(Microsoft.Xrm.Sdk.KeyAttributeCollection keyAttributes) : 
+		public UomSchedule(Microsoft.Xrm.Sdk.KeyAttributeCollection keyAttributes) : 
 				base(EntityLogicalName, keyAttributes)
 		{
 		}
@@ -105,25 +113,43 @@ namespace CleanCodeTest.Domain.Entities
 		/// Default Constructor.
 		/// </summary>
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Gap_Comic() : 
+		public UomSchedule() : 
 				base(EntityLogicalName)
 		{
 		}
 		
-		public const string PrimaryIdAttribute = "gap_comicid";
+		public const string PrimaryIdAttribute = "uomscheduleid";
 		
-		public const string PrimaryNameAttribute = "gap_title";
+		public const string PrimaryNameAttribute = "name";
 		
-		public const string EntitySchemaName = "gap_comic";
+		public const string EntitySchemaName = "UoMSchedule";
 		
-		public const string EntityLogicalName = "gap_comic";
+		public const string EntityLogicalName = "uomschedule";
 		
-		public const string EntityLogicalCollectionName = "gap_comics";
+		public const string EntityLogicalCollectionName = "uomschedules";
 		
-		public const string EntitySetName = "gap_comics";
+		public const string EntitySetName = "uomschedules";
 		
 		/// <summary>
-		/// Unique identifier of the user who created the record.
+		/// Name of the base unit.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baseuomname")]
+		public string BaseUomName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("baseuomname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("baseuomname", value);
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the unit group.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
@@ -136,7 +162,20 @@ namespace CleanCodeTest.Domain.Entities
 		}
 		
 		/// <summary>
-		/// Date and time when the record was created.
+		/// Shows the external party who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyexternalparty")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedByExternalParty
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdbyexternalparty");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the unit group was created.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
 		public System.Nullable<System.DateTime> CreatedOn
@@ -149,7 +188,7 @@ namespace CleanCodeTest.Domain.Entities
 		}
 		
 		/// <summary>
-		/// Unique identifier of the delegate user who created the record.
+		/// Unique identifier of the delegate user who created the uomschedule.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
@@ -167,103 +206,20 @@ namespace CleanCodeTest.Domain.Entities
 		}
 		
 		/// <summary>
-		/// Unique identifier for entity instances
+		/// Description of the unit group.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("gap_comicid")]
-		public System.Nullable<System.Guid> Gap_ComicId
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<System.Nullable<System.Guid>>("gap_comicid");
+				return this.GetAttributeValue<string>("description");
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("gap_comicid", value);
-				if (value.HasValue)
-				{
-					base.Id = value.Value;
-				}
-				else
-				{
-					base.Id = System.Guid.Empty;
-				}
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("gap_comicid")]
-		public override System.Guid Id
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return base.Id;
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.Gap_ComicId = value;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("gap_cover")]
-		public string Gap_Cover
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("gap_cover");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("gap_cover", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("gap_description")]
-		public string Gap_Description
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("gap_description");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("gap_description", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("gap_marvelapiid")]
-		public System.Nullable<int> Gap_MarvelApiId
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<int>>("gap_marvelapiid");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("gap_marvelapiid", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("gap_title")]
-		public string Gap_Title
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("gap_title");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("gap_title", value);
+				this.SetAttributeValue("description", value);
 			}
 		}
 		
@@ -286,7 +242,7 @@ namespace CleanCodeTest.Domain.Entities
 		}
 		
 		/// <summary>
-		/// Unique identifier of the user who modified the record.
+		/// Unique identifier of the user who last modified the unit group.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
@@ -299,7 +255,20 @@ namespace CleanCodeTest.Domain.Entities
 		}
 		
 		/// <summary>
-		/// Date and time when the record was modified.
+		/// Shows the external party who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyexternalparty")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedByExternalParty
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedbyexternalparty");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the unit group was last modified.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
 		public System.Nullable<System.DateTime> ModifiedOn
@@ -312,7 +281,7 @@ namespace CleanCodeTest.Domain.Entities
 		}
 		
 		/// <summary>
-		/// Unique identifier of the delegate user who modified the record.
+		/// Unique identifier of the delegate user who last modified the uomschedule.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
@@ -326,6 +295,24 @@ namespace CleanCodeTest.Domain.Entities
 			set
 			{
 				this.SetAttributeValue("modifiedonbehalfby", value);
+			}
+		}
+		
+		/// <summary>
+		/// Name of the unit group.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("name", value);
 			}
 		}
 		
@@ -361,15 +348,15 @@ namespace CleanCodeTest.Domain.Entities
 		}
 		
 		/// <summary>
-		/// Status of the Comic
+		/// Status of the Unit Group.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public virtual Gap_Comic_StateCode? StateCode
+		public virtual UomSchedule_StateCode? StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Gap_Comic_StateCode?)(EntityOptionSetEnum.GetEnum(this, "statecode")));
+				return ((UomSchedule_StateCode?)(EntityOptionSetEnum.GetEnum(this, "statecode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -379,15 +366,15 @@ namespace CleanCodeTest.Domain.Entities
 		}
 		
 		/// <summary>
-		/// Reason for the status of the Comic
+		/// Reason for the status of the Unit Group.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-		public virtual Gap_Comic_StatusCode? StatusCode
+		public virtual UomSchedule_StatusCode? StatusCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Gap_Comic_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+				return ((UomSchedule_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -411,6 +398,47 @@ namespace CleanCodeTest.Domain.Entities
 			set
 			{
 				this.SetAttributeValue("timezoneruleversionnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the unit group.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomscheduleid")]
+		public System.Nullable<System.Guid> UomScheduleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("uomscheduleid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("uomscheduleid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomscheduleid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.UomScheduleId = value;
 			}
 		}
 		
@@ -446,11 +474,47 @@ namespace CleanCodeTest.Domain.Entities
 		}
 		
 		/// <summary>
+		/// 1:N unit_of_measure_schedule_conversions
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measure_schedule_conversions")]
+		public System.Collections.Generic.IEnumerable<CleanCodeTest.Domain.Entities.Uom> Unit_Of_Measure_Schedule_Conversions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CleanCodeTest.Domain.Entities.Uom>("unit_of_measure_schedule_conversions", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<CleanCodeTest.Domain.Entities.Uom>("unit_of_measure_schedule_conversions", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N unit_of_measurement_schedule_products
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_schedule_products")]
+		public System.Collections.Generic.IEnumerable<CleanCodeTest.Domain.Entities.Product> Unit_Of_Measurement_Schedule_Products
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CleanCodeTest.Domain.Entities.Product>("unit_of_measurement_schedule_products", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<CleanCodeTest.Domain.Entities.Product>("unit_of_measurement_schedule_products", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Gap_Comic(object anonymousType) : 
+		public UomSchedule(object anonymousType) : 
 				this()
 		{
             foreach (var p in anonymousType.GetType().GetProperties())
@@ -468,9 +532,9 @@ namespace CleanCodeTest.Domain.Entities
                 {
                     case "id":
                         base.Id = (System.Guid)value;
-                        Attributes["gap_comicid"] = base.Id;
+                        Attributes["uomscheduleid"] = base.Id;
                         break;
-                    case "gap_comicid":
+                    case "uomscheduleid":
                         var id = (System.Nullable<System.Guid>) value;
                         if(id == null){ continue; }
                         base.Id = id.Value;

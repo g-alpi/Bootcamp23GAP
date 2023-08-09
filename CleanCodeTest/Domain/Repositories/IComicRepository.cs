@@ -5,6 +5,8 @@ namespace CleanCodeTest.Domain.Repositories
 {
     public interface IComicRepository
     {
-        void UpdateByMarvelApiId(gap_Comic data, Entity comic);
+        void UpdateComic(Gap_Comic data, Entity comic);
+
+        string GetComicAttribute(string entityName, string[] column, string conditionColum, string conditionValue);
     }
 }

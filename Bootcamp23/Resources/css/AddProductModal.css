@@ -9,7 +9,10 @@
   flex-wrap: wrap;
   height: 70vh;
 }
-.coverContainerModal img,
+
 .coverContainerFor img {
-  height: 90vh;
+  width: 100%;
+}
+.coverContainerModal img {
+  height: 100%;
 }

@@ -43,6 +43,7 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,9 +52,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProductClean.cs" />
+    <Compile Include="Aplication\Helper\CustomFunctions.cs" />
     <Compile Include="Aplication\Mappers\gap_ComicsComicApiMarvelMappper.cs" />
+    <Compile Include="Domain\Entities\DataverseContext.cs" />
+    <Compile Include="Domain\Entities\EntityOptionSetEnum.cs" />
+    <Compile Include="Domain\Entities\Gap_Comic.cs" />
+    <Compile Include="Domain\Entities\Msdyn_FieldServiceProductType.cs" />
+    <Compile Include="Domain\Entities\Product.cs" />
+    <Compile Include="Domain\Entities\Uom.cs" />
+    <Compile Include="Domain\Entities\UomSchedule.cs" />
+    <Compile Include="Domain\Repositories\IProductRepository.cs" />
+    <Compile Include="Domain\UseCases\AddProduct.cs" />
+    <Compile Include="Infrastucture\Repositories\Crm\ProductCrmRepository.cs" />
     <Compile Include="Plugin.cs" />
-    <Compile Include="Domain\Entities\gap_Comic.cs" />
     <Compile Include="Domain\Repositories\IComicRepository.cs" />
     <Compile Include="Domain\UseCases\ImportDataComic.cs" />
     <Compile Include="Infrastucture\Adapters\ComicApiMarvelDTO.cs" />

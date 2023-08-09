@@ -13,8 +13,8 @@ namespace CleanCodeTest.Domain.UseCases
             _comicRepository = comicRepository;
         }
 
-        public void invoke(gap_Comic data, Entity comic) {
-            _comicRepository.UpdateByMarvelApiId(data,comic);
+        public void invoke(Gap_Comic data, Entity comic) {
+            _comicRepository.UpdateComic(data,comic);
         }
     }
 }
